@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <!--<script src='https://kit.fontawesome.com/a076d05399.js'></script>-->
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<title>Creating an IAT Test</title>
+
+</head>
+<body>
+    <header id="main-header" class="bg-success text-white p-4 mb-3">
+        <div class="container">
+          <h1 id="header-title">Creating an IAT Test</h1>
+        </div>
+        </header>
+<div class="container">
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Task Parameters')" id="defaultOpen">Task Parameters</button>
+    <button class="tablinks" onclick="openTab(event, 'Categories')">Categories</button>
+    <button class="tablinks" onclick="openTab(event, 'Attributes')">Attributes</button>
+    <button class="tablinks" onclick="openTab(event, 'Block Parameters')">Block Parameters</button>
+    <button class="tablinks" onclick="openTab(event, 'Texts')">Texts</button>
+    <button class="tablinks" onclick="openTab(event, 'Finish')">Finish</button>  
+
+</div>
+<div id="Finish" class="tabcontent">
+  <link rel="stylesheet" href="gui.css">
+
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+            <h1>
+                  <button class="CreateFile" id ="CreateFile" >Create Script</button>
+           
+            </h1>    
+</div>
+<div id="Texts" class="tabcontent">
+  <link rel="stylesheet" href="gui.css">
+
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+            <h1>
+                <table>
+                  <button class="resetTextsParameters" id ="resetTextsParameters" style="float: right" >reset</button>
+                  <button class="ClearTextsParameters" id ="ClearTextsParameters" style="float: right" >Clear</button>
+                    <tr class="lines"> 
+                    <td  class = 'popup' style="width: 5px;"><i id='information' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup">Text shown to the user when he choose the wront answer</span></td>
+                    <td class="textOnError"> Text presented at user error:</td>
+                    <td class="keyText"> <form>
+                            <textarea class="keyText" id="textOnError" name="w3review" rows="3" cols="50" oninput="textOnErrorChanged1()"><p align="center" style="font-size:0.6em"; font-family:arial">' +'If you make a mistake, a red <font color="#ff0000"><b>X</b></font> will appear. '+'Press the other key to continue.<p/></textarea>
+                          </form>
+                        </td>
+                     </tr>
+                     <tr class="lines">
+                      <td  class = 'popup' style="width: 5px;"><i id='information2' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup2">left, right and or text</span></td>
+
+                      <td class="textOnError">left key text:</td> 
+                      <td class="keyText"><form>
+                        <textarea class="keyText" id="leftKeyText" name="w3review" rows="2" cols="10" oninput="leftKeyTextChanged1()">Press "E" for </textarea>
+                      </form>
+                       </td>
+                        <td class="textOnError"> or text:</td> 
+                        <td class="keyText"> <form>
+                          <textarea class="keyText" id="orText" name="w3review" rows="2" cols="10" oninput="orTextChangedChanged1()">or</textarea>
+                        </form>
+                         </td>
+                        <td class="textOnError">right key text:</td>
+                        <td class="keyText"> <form>
+                          <textarea class= "keyText" id="rightKeyText" name="w3review" rows="2" cols="10" oninput="rightKeyTextChanged1()">Press "I" for</textarea>
+                        </form>
+                         </td>
+                        </tr> 
+                        <tr class="lines">
+                            <td  class = 'popup' style="width: 5px;"><i id='information3' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup3">Text shown to the user when he finished the test</span></td>
+                            <td class="textOnError"> Final text:</td> 
+                            <td class="keyText"><form>
+                              <textarea class="keyText" id="FinalText" name="w3review" rows="3" cols="35" oninput="FinalTextChanged1()">Press space to continue to the next task</textarea>
+                            </form>
+                             </td>
+
+                        </tr>
+                        <tr class="lines"> 
+                          <td  class = 'popup' style="width: 5px;"><i id='information4' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup4">Instruction text for the attributes</span></td>
+                          <td class="textOnError"> Attributes block instructions:</td>
+                          <td class="keyText"> <form>
+                                  <textarea class="keyText" id="AttributesText" name="w3review" rows="4" cols="70" style="left:3px" oninput="AttributesTextChanged1()"><div><p align="center" style="font-size:20px; font-family:arial">' +'<font color="#000000"><u>Part blockNum of nBlocks </u><br/><br/></p>' +'<p style="font-size:20px; text-align:left; vertical-align:bottom; margin-left:10px; font-family:arial">' +'Put a left finger on the <b>E</b> key for items that belong to the category <font color="#0000ff">leftAttribute.</font>' +'<br/>Put a right finger on the <b>I</b> key for items that belong to the category <font color="#0000ff">rightAttribute</font>.<br/><br/>' +'If you make a mistake, a red <font color="#ff0000"><b>X</b></font> will appear. ' +'Press the other key to continue.<br/>' +'<u>Go as fast as you can</u> while being accurate.<br/><br/></p>'+'<p align="center">Press the <b>space bar</b> when you are ready to start.</font></p></div></textarea>
+                                </form>
+                              </td>
+                           </tr>
+                           <tr class="lines"> 
+                            <td  class = 'popup' style="width: 5px;"><i id='information5' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup5">Instruction text for the categories</span></td>
+                            <td class="textOnError"> Categories block instructions:</td>
+                            <td class="keyText"> <form>
+                                    <textarea class="keyText" id="CategoriesText" name="w3review" rows="4" cols="70" oninput="CategoriesTextChanged1()"><div><p align="center" style="font-size:20px; font-family:arial">' +'<font color="#000000"><u>Part blockNum of nBlocks </u><br/><br/></p>' +'<p style="font-size:20px; text-align:left; vertical-align:bottom; margin-left:10px; font-family:arial">' +'Put a left finger on the <b>E</b> key for items that belong to the category <font color="#336600">leftCategory</font>. ' +'<br/>Put a right finger on the <b>I</b> key for items that belong to the category <font color="#336600">rightCategory</font>.<br/>' +'Items will appear one at a time.<br/><br/>' +'If you make a mistake, a red <font color="#ff0000"><b>X</b></font> will appear. ' +'Press the other key to continue.<br/>' +'<u>Go as fast as you can</u> while being accurate.<br/><br/></p>'+'<p align="center">Press the <b>space bar</b> when you are ready to start.</font></p></div></textarea>
+                                  </form>
+                                </td>
+                             </tr>
+                             <tr class="lines"> 
+                              <td  class = 'popup' style="width: 5px;"><i id='information6' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup6">Instruction text for the first combined block</span></td>
+                              <td class="textOnError"> First combined block instructions:</td>
+                              <td class="keyText"> <form>
+                                      <textarea class="keyText" id="FirstCombinedText" name="w3review" rows="4" cols="70" style="left:15px" oninput="FirstCombinedTextChanged1()"><div><p align="center" style="font-size:20px; font-family:arial">' +'<font color="#000000"><u>Part blockNum of nBlocks </u><br/><br/></p>' +'<p style="font-size:20px; text-align:left; vertical-align:bottom; margin-left:10px; font-family:arial">' +'Use the <b>E</b> key for <font color="#336600">leftCategory</font> and for <font color="#0000ff">leftAttribute</font>.<br/>' +'Use the <b>I</b> key for <font color="#336600">rightCategory</font> and for  <font color="#0000ff">rightAttribute</font>.<br/>' +'Each item belongs to only one category.<br/><br/>' +'If you make a mistake, a red <font color="#ff0000"><b>X</b></font> will appear. ' +'Press the other key to continue.<br/>' + '<u>Go as fast as you can</u> while being accurate.<br/><br/></p>' +'<p align="center">Press the <b>space bar</b> when you are ready to start.</font></p></div></textarea>
+                                    </form>
+                                  </td>
+                               </tr>
+                               <tr class="lines"> 
+                                <td  class = 'popup' style="width: 5px;"><i id='information7' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup7">Instruction text for the second combined block</span></td>
+                                <td class="textOnError"> Second combined block instructions:</td>
+                                <td class="keyText"> <form>
+                                  <textarea class="keyText" id="SecondCombinedTxt" name="w3review" rows="4" cols="70" oninput="SecondCombinedTxtChanged1()"><div><p align="center" style="font-size:20px; font-family:arial">' +'<font color="#000000"><u>Part blockNum of nBlocks </u><br/><br/></p>' +'<p style="font-size:20px; text-align:left; vertical-align:bottom; margin-left:10px; font-family:arial">' +'This is the same as the previous part.<br/>' +'Use the <b>E</b> key for <font color="#336600">leftCategory</font> and for <font color="#0000ff">leftAttribute</font>.<br/>' +'Use the <b>I</b> key for <font color="#336600">rightCategory</font> and for  <font color="#0000ff">rightAttribute</font>.<br/>' +'Each item belongs to only one category.<br/><br/>' +'<u>Go as fast as you can</u> while being accurate.<br/><br/></p>' +'<p align="center">Press the <b>space bar</b> when you are ready to start.</font></p></div></textarea>
+                                      </form>
+                                    </td>
+                                 </tr>
+                                 <tr class="lines"> 
+                                  <td  class = 'popup' style="width: 5px;"><i id='information18' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup18">Instruction text for switching categories</span></td>
+                                  <td class="textOnError"> Switched Categories instructions:</td>
+                                  <td class="keyText"> <form>
+                                    <textarea class="keyText" id="instSwitchCategories" name="w3review" rows="4" cols="70" oninput="instSwitchCategoriesChanged1()"><div><p align="center" style="font-size:20px; font-family:arial">'+'<font color="#000000"><u>Part blockNum of nBlocks </u><br/><br/></p>' +'<p style="font-size:20px; text-align:left; vertical-align:bottom; margin-left:10px; font-family:arial">' +'<b>Watch out, the labels have changed position!</b><br/>' +'Put the left finger on the <b>E</b> key for <font color="#336600">leftCategory</font>.<br/>' +'Put the right finger on the <b>I</b> key for <font color="#336600">rightCategory</font>.<br/><br/>' +'<u>Go as fast as you can</u> while being accurate.<br/><br/></p>' +'<p align="center">Press the <b>space bar</b> when you are ready to start.</font></p></div></textarea>
+                                        </form>
+                                      </td>
+                                   </tr>
+                                   <tr class="lines"> 
+                                    <td  class = 'popup' style="width: 5px;"><i id='information19' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup19">The text that will be shown befor the debriefing trial</span></td>
+                                    <td class="textOnError"> Pre-Debriefing Text:</td>
+                                    <td class="keyText"> <form>
+                                      <textarea class="keyText" id="preDebriefingText" name="w3review" rows="4" cols="70" oninput="preDebriefingTextChanged1()">Press space to continue to your feedback </textarea>
+                                          </form>
+                                        </td>
+                                     </tr>
+                    </table>    
+                    <!-- <button class="sumbitTextsParameters" id ="sumbitTextsParameters" style="float: right" >Save Texts Parameters</button> -->
+
+
+
+            </h1>    
+</div>
+<div id="Task Parameters" class="tabcontent">
+    <div class="container">
+      <table class="w3-table w3-bordered">
+        <tr class="border_lines">
+        <td></td><td></td><td></td><td></td>
+        <td><input type="reset" id="resetTask" value="Reset"></td>
+          <td><input type="reset" id="clearTask" value="Clear"></td>
+    </tr>
+  <tr class = "lines">
+            <td  class = 'popup' style="width: 5px;"><i id='information8' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup8">Will the task run on touch devices?</span></td>
+            <td class="cellsStyle"> Touch Device</td>
+            
+            <td>
+                <input type="checkbox" id="touch" style="width:25%;" onchange="checkChangeInText()">
+            </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          </tr>
+          <tr class = "lines">
+            <td  class = 'popup' style="width: 5px;"><i id='information24' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup24">is this a qualtrics version</span></td>
+            <td class="cellsStyle"> Qualtrics</td>
+            
+            <td>
+                <input type="checkbox" id="Qualtrics" style="width:25%;" checked onchange="checkedQualtrics()">
+            </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          </tr>
+            <tr class = "lines">
+            <td  class = 'popup' style="width: 5px;"><i id='information9' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup9">Do you want to enable a full screen option?</span></td>
+              <td class="cellsStyle">Enable Full Screen</td>
+            <td>
+              <input type="checkbox" id="full_screen" style="width:25%;" checked onchange="checkFullScreen()">
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+              <tr class = "lines">
+                <td  class = 'popup' style="width: 5px;"><i id='information10' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup10">Do you want to show debriefing at the end?</span></td>
+                  <td class="cellsStyle"> Show Debriefing</td>
+                <td>
+                  <input type="checkbox" style="width:25%;" id="debriefing" checked onchange="checkShowDebriefing()">
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+                  <tr class = "lines">
+                    <td  class = 'popup' style="width: 5px;"><i id='information11' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup11">In the case of a mistake, do you want to display a message to the user?</span></td>
+                      <td class="cellsStyle"> Show an Error Message</td>
+                    </td>
+                    <td>
+                      <input type="checkbox" style="width:25%;" id="error_message" checked>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                      <tr class = "lines">
+                        <td  class = 'popup' style="width: 5px;"><i id='information12' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup12">In the case of a mistake, the user cannot continue if he didn't coreect his answer</span></td>
+                          <td class="cellsStyle" style="padding: 1.5em 0 1.7em 0.4em;"> Must correct wrong answers</td>
+                        </td>
+                        <td>
+                          <input type="checkbox" id="correct_wrong_answer" style="width:25%;">
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  <tr class = "border_lines">
+                  <td  class = 'popup' style="width: 5px;"><i id='information13' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup13">Please enter the directory url for the task's pictures</span></td>
+                  <td class="cellsStyle"> Image's URL</td>
+                  <td><input type="text" style="width: 30rem;" id="base_url" required>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>                  
+                <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <td style="width:10%">
+                  <!-- <input type="submit" id="sumbitTaskParameters" value="Save Task Parameters"> -->
+                </td></tr>
+          </table>
+        </div>
+      </div>  
+<div id="Categories" class="tabcontent">
+    <div class="container">
+        <!-- ///////////////////////////////////////////FIRST CATEGORY//////////////////////////////////////// -->
+          <table class="w3-table w3-bordered" id="first_table">
+            <tr class="border_lines"><td>
+              
+              <h1 class="fontStyle" style="font-size: 1.8em; margin-top: 0.3em;">First Category:</h1>
+            </td>
+              <td></td><td></td>
+                <td><input type="reset" id="resetCategories" style =" margin-left:7em; float: right;" value="Reset"></td>
+                <td><input type="reset" id="clearCategories" style ="float: left;" value="Clear"></td>
+            </tr>
+            <tr class="lines">
+              <td  class = 'popup' style="width: 5px;"><i id='information14' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup14">Will appear in the data and in the default feedback message</span></td>
+              <td class="cellsStyle" style="width:80%;"> Category name as will appear in the data:</td>
+            <td>
+              <input type="text" value="Black people" style="width: 15rem;" id="first_name_in_data" required></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <tr class="lines" id="row_first_name_presented">
+              <td  class = 'popup' style="width: 5px;"><i id='information15' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup15">Name of the category presented in the task</span></td>
+              <td class="cellsStyle"> Category title as will appear to the user:</td>
+            <td style="width:25%">
+              <input type="text" value="Black people" style="width: 15rem;" id="first_name_presented" required>
+            </td><td style="width:12%;"">
+              <label> Category's type: </label>
+              <select id="first_category_type" onchange="checkFirstCategoryType()">
+                <option>Word</option>
+                <option>Image</option>
+            </td>
+            </tr>
+            <tr>
+            <td style="width:41%;"><br>
+              <span class="fontStyle"> Enter stimulus content:</span><br>
+              <input type="text" pattern="([A-z0-9À-ž\s]){2,}" style="width: 15rem;" id="first_ctg_new_stimulus">
+              <input type="button" id="first_add_ctg_word_stimulus" value="Add Word" onclick="addFirstCategoryStimulus(this.id)">
+              <input type="button" id="first_add_ctg_image_stimulus" value="Add Image" onclick="addFirstCategoryStimulus(this.id)">
+            </td>
+          </tr>
+          <tr class="border_lines">
+            <td id="first_ctg_stimuli_cell"> 
+              <span class="fontStyle"> Stimuli:</span><br>    
+              <select id="first_ctg_stimuli" multiple="multiple" size="8" style="width: 15rem;">
+                <option>Tyron [Word]</option>
+                <option>Malik [Word]</option>
+                <option>Terrell [Word]</option>
+                <option>Jazmin [Word]</option>
+                <option>Tiara [Word]</option>
+                <option>Shanice [Word]</option>
+              </select><br><br>
+
+              <input type="button" id="first_ctg_remove_stimulus" value="Remove Choosen Stimuli" onclick="removeChosenFirstCategoryStimulus()">
+              <input type="button" id="first_ctg_remove_all" value="Remove All Stimuli" onclick="removeAllFirstCategoryStimuli()">
+            <br><br>
+            </td><td></td><td></td><td></td><td></td>
+          </tr>
+            </table>
+            <!-- ///////////////////////////////////////////SECOND CATEGORY//////////////////////////////////////// -->
+            <table class="w3-table w3-bordered" >
+            <tr class="border_lines"><td>
+              <h1 class="fontStyle" style="font-size: 1.8em; margin-top: 0.3em;">Second Category:</h1>
+            </td>
+            <td></td><td></td><td></td><td></td><td></td>
+            <tr class="lines">
+              <td  class = 'popup' style="width: 5px;"><i id='information16' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup16">Will appear in the data and in the default feedback message</span></td>
+              <td class="cellsStyle" style="width:80%;"> Category name as will appear in the data:</td>
+            <td>
+              <input type="text" value="White people" style="width: 15rem;" id="sec_name_in_data" required></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+          </tr>
+            <tr class="lines" id="row_second_name_presented">
+              <td  class = 'popup' style="width: 5px;"><i id='information17' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup17">Name of the category presented in the task</span></td>
+              <td class="cellsStyle"> Category title as will appear to the user:</td>
+            <td style="width:25%">
+              <input type="text" value="White people" style="width: 15rem;" id="sec_name_presented" required>
+            </td><td style="width:12%;">
+              <label> Category's type:</label>
+              <select id="sec_category_type" onchange="checkSecondCategoryType()">
+                <option>Word</option>
+                <option>Image</option>
+            </td>
+          </tr>
+            <tr>
+              <td style="width:41%;"><br>
+              <span class="fontStyle"> Enter stimulus content:</span><br>
+              <input type="text" pattern="([A-z0-9À-ž\s]){2,}" style="width: 15rem;" id="sec_ctg_new_stimulus">
+              <input type="button" id="sec_ctg_add_word_stimulus" value="Add Word" onclick="addSecondCategoryStimulus(this.id)">
+              <input type="button" id="sec_ctg_add_image_stimulus" value="Add Image" onclick="addSecondCategoryStimulus(this.id)">
+            </td></tr>
+            <tr class="border_lines">
+              <td id="sec_ctg_stimuli_cell">    
+              <span class="fontStyle"> Stimuli:</span><br>         
+              <select id="sec_ctg_stimuli" multiple="multiple" size="8" style="width: 15rem;" required>
+                <option>Jake [Word]</option>
+                <option>Connor [Word]</option>
+                <option>Bradley [Word]</option>
+                <option>Allison [Word]</option>
+                <option>Emma [Word]</option>
+                <option>Emily [Word]</option>
+              </select><br><br>
+              <input type="button" id="sec_ctg_remove_stimulus" value="Remove Choosen Stimuli" onclick="removeChosenSecondCategoryStimulus()">
+              <input type="button" id="sec_ctg_remove_all" value="Remove All Stimuli" onclick="removeAllSecondCategoryStimuli()">
+            <br><br>
+            </td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+            <tr><td><td></td><td></td><td></td>
+            <td style="width:12%;">
+              <!-- <input type="submit" id="save_categories" value="Save Categories" onclick="saveCategories()"></td></tr> -->
+          </table>
+
+</div>
+</div>
+<!--////////////////////////////////////Attributes///////////////////////////////////-->
+<div id="Attributes" class="tabcontent">
+  <div class="container">
+      <!-- ///////////////////////////////////////////FIRST Attribute//////////////////////////////////////// -->
+      <table class="w3-table w3-bordered" id="first_table">
+        <tr class="border_lines"><td>
+          
+          <h1 class="fontStyle" style="font-size: 1.8em; margin-top: 0.3em;">First Attribute:</h1>
+        </td>
+          <td></td><td></td>
+            <td><input type="reset" id="resetAttributes" style =" margin-left:7em; float: right;" value="Reset"></td>
+            <td><input type="reset" id="clearAttributes" style ="float: left;" value="Clear"></td>
+        </tr>
+        <tr class="lines">
+          <td  class = 'popup' style="width: 5px;"><i id='information20' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup20">Will appear in the data and in the default feedback message</span></td>
+          <td class="cellsStyle" style="width:80%;"> Attribute name as will appear in the data:</td>
+        <td>
+          <input type="text" value="Bad words" style="width: 15rem;" id="first_attr_in_data" required></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <tr class="lines" id="row_first_attr_presented">
+          <td  class = 'popup' style="width: 5px;"><i id='information21' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup21">Name of the attribute presented in the task</span></td>
+          <td class="cellsStyle"> Attribute title as will appear to the user:</td>
+        <td style="width:25%">
+          <input type="text" value="Bad words" style="width: 15rem;" id="first_attr_presented" required>
+        </td><td style="width:12%;"">
+          <label> Attribute's type: </label>
+          <select id="first_attr_type" onchange="checkFirstAttributeType()">
+            <option>Word</option>
+            <option>Image</option>
+        </td>
+        </tr>
+        <tr>
+        <td style="width:41%;"><br>
+          <span class="fontStyle"> Enter stimulus content:</span><br>
+          <input type="text" pattern="([A-z0-9À-ž\s]){2,}" style="width: 15rem;" id="first_attr_new_stimulus">
+          <input type="button" id="first_add_attr_word_stimulus" value="Add Word" onclick="addFirstAttributeStimulus(this.id)">
+          <input type="button" id="first_add_attr_image_stimulus" value="Add Image" onclick="addFirstAttributeStimulus(this.id)">
+        </td>
+      </tr>
+      <tr class="border_lines">
+        <td id="first_attr_stimuli_cell"> 
+          <span class="fontStyle"> Stimuli:</span><br>    
+          <select id="first_attr_stimuli" multiple="multiple" size="8" style="width: 15rem;">
+            <option>Awful [Word]</option>
+            <option>Failure [Word]</option>
+            <option>Agony [Word]</option>
+            <option>Hurt [Word]</option>
+            <option>Horrible [Word]</option>
+            <option>Terrible [Word]</option>
+            <option>Nasty [Word]</option>
+            <option>Evil [Word]</option>
+          </select><br><br>
+
+          <input type="button" id="first_attr_remove_stimulus" value="Remove Choosen Stimuli" onclick="removeChosenFirstAttributeStimulus()">
+          <input type="button" id="first_attr_remove_all" value="Remove All Stimuli" onclick="removeAllFirstAttributeStimuli()">
+        <br><br>
+        </td><td></td><td></td><td></td><td></td>
+      </tr>
+        </table>
+        <!-- ///////////////////////////////////////////SECOND Attribute//////////////////////////////////////// -->
+        <table class="w3-table w3-bordered" >
+        <tr class="border_lines"><td>
+          <h1 class="fontStyle" style="font-size: 1.8em; margin-top: 0.3em;">Second Attribute:</h1>
+        </td>
+        <td></td><td></td><td></td><td></td><td></td>
+        <tr class="lines">
+          <td  class = 'popup' style="width: 5px;"><i id='information22' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup22">Will appear in the data and in the default feedback message</span></td>
+          <td class="cellsStyle" style="width:80%;"> Attribute name as will appear in the data:</td>
+        <td>
+          <input type="text" value="Good Words" style="width: 15rem;" id="sec_attr_in_data" required></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+        <tr class="lines" id="row_second_attr_presented">
+          <td  class = 'popup' style="width: 5px;"><i id='information23' class='fas fa-info-circle' style='font-size:24px'></i><span class="popuptext" id="myPopup23">Name of the attribute presented in the task</span></td>
+          <td class="cellsStyle"> Attribute title as will appear to the user:</td>
+        <td style="width:25%">
+          <input type="text" value="Good Words" style="width: 15rem;" id="sec_attr_presented" required>
+        </td><td style="width:12%;">
+          <label> Attribute's type:</label>
+          <select id="sec_attr_type" onchange="checkSecondAttributeType()">
+            <option>Word</option>
+            <option>Image</option>
+        </td>
+      </tr>
+        <tr>
+          <td style="width:41%;"><br>
+          <span class="fontStyle"> Enter stimulus content:</span><br>
+          <input type="text" pattern="([A-z0-9À-ž\s]){2,}" style="width: 15rem;" id="sec_attr_new_stimulus">
+          <input type="button" id="sec_attr_add_word_stimulus" value="Add Word" onclick="addSecondAttributeStimulus(this.id)">
+          <input type="button" id="sec_attr_add_image_stimulus" value="Add Image" onclick="addSecondAttributeStimulus(this.id)">
+        </td></tr>
+        <tr class="border_lines">
+          <td id="sec_attr_stimuli_cell">    
+          <span class="fontStyle"> Stimuli:</span><br>         
+          <select id="sec_attr_stimuli" multiple="multiple" size="8" style="width: 15rem;" required>
+            <option>Laughter [Word]</option>
+            <option>Happy [Word]</option>
+            <option>Glorious [Word]</option>
+            <option>Joy [Word]</option>
+            <option>Wonderful [Word]</option>
+            <option>Peace [Word]</option>
+            <option>Pleasure [Word]</option>
+            <option>Love [Word]</option>
+          </select><br><br>
+          <input type="button" id="sec_attr_remove_stimulus" value="Remove Choosen Stimuli" onclick="removeChosenSecondAttributeStimulus()">
+          <input type="button" id="sec_attr_remove_all" value="Remove All Stimuli" onclick="removeAllSecondAttributeStimuli()">
+        <br><br>
+        </td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+        <tr><td><td></td><td></td><td></td>
+        <td style="width:12%;">
+          <!-- <input type="submit" id="save_categories" value="Save Attributes" onclick="saveAttributes()"></td></tr> -->
+      </table>
+
+</div>
+</div>
+<div id="Block Parameters" class="tabcontent" style="height: 53rem; overflow:hidden;">
+    <div class="container" style="overflow:hidden; margin-bottom: -200px;">
+    <table class="w3-table w3-bordered">
+      <tr class="border_lines">
+        <td></td>
+        <td><input type="reset" id="resetBlocks" value="Reset">
+          <input type="reset" id="clearBlocks" value="Clear"></td>
+    </tr>
+          <tr class="lines">
+            <td><span class="fontStyle">Categories:</span></td>
+            <td class="block-cell">
+                <table class="w3-table w3-bordered">
+                <tr><td>
+                    <label for="categories_trials_blocks">No. of trials in block</label>
+                    <input type="number" id=categories_trials_blocks onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step = "1" value=20 min=0 style="width: 45px;" /></td></tr>
+                    <tr><td><label for="categories_mini_blocks">No. of MiniBlocks</label>
+                    <input type="number" id=categories_mini_blocks onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step = "1" value=5 min=0 style="width: 45px;" /></td></tr></table>
+                </td>
+              </tr>
+          <tr class="lines">
+            <td><span class="fontStyle">Attributes: </span></td>
+            <td class="block-cell">
+              <table class="w3-table w3-bordered">
+                <tr><td>
+            <label for="attributes_trials_blocks">No. of trials in block</label>
+            <input type="number" id=attributes_trials_blocks onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step = "1" value=20 min=0 style="width: 45px;" /></td></tr>
+            <tr><td><label for="attributes_mini_blocks">No. of MiniBlocks</label>
+            <input type="number" id=attributes_mini_blocks onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step = "1" value=5 min=0 style="width: 45px;" /></td></tr></table>
+            </td><td></td>
+          </tr>
+              <tr class="lines">
+                <td><span class="fontStyle">First Combined Block:</span></td>
+                <td class="block-cell">
+                  <table class="w3-table w3-bordered">
+                    <tr><td>
+                <label for="first_combined_trials_blocks">No. of trials in block</label>
+                <input type="number" id=first_combined_trials_blocks onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step = "1" value=20 min=0 style="width: 45px;" /></td></tr>
+                <tr><td><label for="first_combined_mini_blocks">No. of MiniBlocks</label>
+                <input type="number" id=first_combined_mini_blocks onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step = "1" value=5 min=0 style="width: 45px;" /></td></tr></table>
+                </td><td></td>
+            </tr>
+                  <tr class="lines">
+                    <td><span class="fontStyle">Second Combined Block:</span></td>
+                    <td class="block-cell">
+                      <table class="w3-table w3-bordered">
+                        <tr><td>
+                    <label for="second_combined_trials_blocks">No. of trials in block</label>
+                    <input type="number" id=second_combined_trials_blocks onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step = "1" value=40 min=0 style="width: 45px;" /></td></tr>
+                    <tr><td><label for="second_combined_mini_blocks">No. of MiniBlocks</label>
+                    <input type="number" id=second_combined_mini_blocks onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step = "1" value=10 min=0 style="width: 45px;" /></td></tr></table>
+                  </td><td></td>
+                </tr>
+                <tr class="lines">
+                  <td><span class="fontStyle">Switch Block:</span></td>
+                  <td class="block-cell">
+                    <table class="w3-table w3-bordered">
+                    <tr><td>
+                <label for="switch_trials_blocks">No. of trials in block</label>
+                <input type="number" id=switch_trials_blocks onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step = "1" value=28 min=0 style="width: 45px;" /></td></tr>
+                <tr><td><label for="switch_mini_blocks">No. of MiniBlocks</label>
+                <input type="number" id=switch_mini_blocks onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" step = "1" value=7 min=0 style="width: 45px;" /></td></tr></table>
+                </td><td></td>
+                </tr>
+                <tr class="lines">
+                      <td style="padding: 1.5em 5em 1.5em 0;">
+                <span class="fontStyle">Randomize first category side: </span><br>
+              </td>
+              <td style="padding: 1.5em 5em 1.5em 0;">
+                <input type="checkbox" id="random_category" checked >
+            </td><td></td>
+          </tr>
+          <tr class="border_lines">
+                  <td style="padding: 1.5em 5em 1.5em 0;">
+                <span class="fontStyle">Randomize first attribute side: </span><br>
+            </td>
+            <td style="padding: 1.5em 5em 1.5em 0;">
+              <input type="checkbox" id="random_attribute"><br>
+          </td><td></td>
+        </tr>
+        <tr>
+          <td></td>
+            <td>
+              <!-- <input type="submit" id="sumbitBlocks" value="Save Block Parameters"></td></tr> -->
+          </table>
+        <div class="card card-body" style="position: relative; width: 20rem; left: 720px; top: -600px;">
+          <table class="w3-table w3-bordered">
+            <tr class="border_lines">
+              <td style="padding: 1em 0 1em 0em;"><span class="fontStyle">Please Notice:</span></td></tr>
+            <tr class="lines">
+              <td style="padding: 1em 0 1em 0em;"> 1. In each block we can include a number of mini blocks, to reduce repetition of same groups/response</td> 
+            <tr class="lines"><td style="padding: 1em 0 1em 0em;">2. If you set the number of trials in any block to 0, that block will be skipped</td></tr>
+            <tr><td style="padding: 1em 0 1em 0em;">3. Explanation about trials and miniBlocks</td></tr>
+            </table>
+    </div>
+</div>
+</div>
+</div>
+<script src="tabs.js"></script>
+</body>
+</html> 
