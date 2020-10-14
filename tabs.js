@@ -963,7 +963,7 @@ function buildTextToWrite() {
 
   if (first_category_type == "Word") {
     text+= "word : '" + document.getElementById("first_name_presented").value + "'},\n";
-    text+= "\t\t\tcss : {color:'" + document.getElementById("first_category_color").value + "', 'font-size':" + 
+    text+= "\t\t\tcss : {color:'" + document.getElementById("first_category_color").value + "', 'font-size':'" + 
     document.getElementById("first_ctg_font_size").value + "em'},\n";
   }
 
@@ -1001,7 +1001,7 @@ function buildTextToWrite() {
   }
 
   if (word_in_list == 1) {// case word - add design elements
-    text += "\t\t stimulusCss : {color:'" + document.getElementById("first_ctg_stimuli_color").value + "', 'font-size':" +
+    text += "\t\t stimulusCss : {color:'" + document.getElementById("first_ctg_stimuli_color").value + "', 'font-size':'" +
       document.getElementById("first_ctg_stimuli_font_size").value + "em'},\n\t},\n";
   }
 
@@ -1015,7 +1015,7 @@ function buildTextToWrite() {
 
   if (sec_category_type == "Word") {
     text += "word : '" + document.getElementById("sec_name_presented").value + "'},\n" +
-      "\t\t\t css : {color:'" + document.getElementById("sec_category_color").value + "', 'font-size':" +
+      "\t\t\t css : {color:'" + document.getElementById("sec_category_color").value + "', 'font-size':'" +
       document.getElementById("sec_ctg_font_size").value + "em'},\n";
   }
   else {//case category is image
@@ -1051,7 +1051,7 @@ function buildTextToWrite() {
     }
   }
   if (word_in_list == 1) {// case word - add design elements
-    text+= "\t\tstimulusCss : {color:'" + document.getElementById("sec_ctg_stimuli_color").value + "', 'font-size':" + 
+    text+= "\t\tstimulusCss : {color:'" + document.getElementById("sec_ctg_stimuli_color").value + "', 'font-size':'" + 
       document.getElementById("sec_ctg_stimuli_font_size").value + "em'},\n\t},\n";
   }
 
@@ -1066,7 +1066,7 @@ var first_att_type = first_att_type.options[first_att_type.selectedIndex].text;
 
 if (first_att_type == "Word") {
   text+= "word : '" + document.getElementById("first_attr_presented").value + "'},\n";
-  text+= "\t\t\tcss : {color:'" + document.getElementById("first_attr_color").value + "', 'font-size':" + 
+  text+= "\t\t\tcss : {color:'" + document.getElementById("first_attr_color").value + "', 'font-size':'" + 
   document.getElementById("first_attr_font_size").value + "em'},\n";
 }
 
@@ -1104,7 +1104,7 @@ for (var i = 0; i < first_length; i++) {
 }
 
 if (word_in_list == 1) {// case word - add design elements
-  text += "\t\t stimulusCss : {color:'" + document.getElementById("first_attr_stimuli_color").value + "', 'font-size':" +
+  text += "\t\t stimulusCss : {color:'" + document.getElementById("first_attr_stimuli_color").value + "', 'font-size':'" +
     document.getElementById("first_attr_stimuli_font_size").value + "em'},\n\t},\n";
 }
 
@@ -1118,7 +1118,7 @@ var sec_attr_type = sec_attr_type.options[sec_attr_type.selectedIndex].text;
 
 if (sec_attr_type == "Word") {
   text += "word : '" + document.getElementById("sec_attr_presented").value + "'},\n" +
-    "\t\t\t css : {color:'" + document.getElementById("sec_attr_color").value + "', 'font-size':" +
+    "\t\t\t css : {color:'" + document.getElementById("sec_attr_color").value + "', 'font-size':'" +
     document.getElementById("sec_attr_font_size").value + "em'},\n";
 }
 else {//case category is image
@@ -1154,7 +1154,7 @@ for (var i = 0; i < sec_length; i++) {
   }
 }
 if (word_in_list == 1) {// case word - add design elements
-  text+= "\t\tstimulusCss : {color:'" + document.getElementById("sec_attr_stimuli_color").value + "', 'font-size':" + 
+  text+= "\t\tstimulusCss : {color:'" + document.getElementById("sec_attr_stimuli_color").value + "', 'font-size':'" + 
     document.getElementById("sec_attr_stimuli_font_size").value + "em'},\n\t},\n";
 }
   //////////////////////////////////URL/////////////////////////////////////////////
